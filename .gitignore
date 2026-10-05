@@ -1,0 +1,16 @@
+# Dependencies en build
+node_modules
+dist
+
+# Secrets: nooit committen
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+*.log
+*.tsbuildinfo

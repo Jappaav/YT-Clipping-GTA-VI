@@ -43,8 +43,19 @@ Voorbeeld: "Een gebruiker krijgt nu geen bevestiging na het opslaan. Ik zou een 
 - Controleer bestaande functionaliteit na belangrijke wijzigingen.
 - Houd oplossingen zo eenvoudig mogelijk; bouw niet onnodig ingewikkeld.
 
+## Samenwerken via GitHub (voor beide gebruikers)
+Wijzigingen komen niet vanzelf bij de ander terecht: ze staan pas bij de ander als ze zijn opgeslagen (commit), geüpload (push) en door de ander zijn opgehaald (pull). Vaste afspraken:
+- **Begin van elke sessie:** controleer of er nieuwe wijzigingen van de ander op GitHub staan (`git fetch`, daarna kijken of de eigen branch achterloopt). Meld dat in simpele taal en vraag de gebruiker eerst op "Pull origin" te klikken in GitHub Desktop voordat er gewerkt wordt. Lukt `git fetch` niet (geen inlogtoegang), zeg dan dat de gebruiker in GitHub Desktop op "Fetch origin" moet klikken.
+- **Altijd vooruit werken:** de enige handeling die de gebruikers zelf doen is op "Push origin" klikken in GitHub Desktop. Al het andere regelt Claude.
+- **Einde van elke taak:** sla de wijzigingen zelf op (commit, met een korte Nederlandse omschrijving) zonder dat de gebruiker erom hoeft te vragen. Controleer vooraf met `git status` dat er geen geheimen (`.env`, sleutels) of onnodige bestanden (`node_modules`, `dist`) in de commit komen. Probeer daarna `git push`; lukt dat niet (geen inlogtoegang), zeg dan kort: "Alles staat klaar, klik in GitHub Desktop op Push origin."
+- **Na een push:** herinner de gebruiker eraan de ander te laten weten dat er een nieuwe versie klaarstaat.
+- Elk werkt op een eigen branch; samenvoegen naar `main` gebeurt pas na overleg. Bij een conflict (beiden hebben hetzelfde bestand veranderd) niet zelf kiezen: leg het probleem in gewone taal uit en vraag welke versie behouden moet blijven.
+- **Cijfers staan niet in GitHub:** de gegevens (clips, views, likes) staan in Supabase en worden ingevoerd op de website. GitHub bevat alleen het ontwerp van de website.
+- Git staat alleen in GitHub Desktop, niet op het zoekpad: gebruik `%LOCALAPPDATA%\GitHubDesktop\app-<versie>\resources\app\git\cmd\git.exe` als `git` niet gevonden wordt.
+
 ## Commando's
 - `npm install` / `npm run dev`: lokaal draaien op http://localhost:5173 (vereist een ingevulde `.env`, zie `.env.example`)
+- `npm run demo`: demomodus met voorbeeldgegevens uit `src/lib/demoClient.ts` (nep-Supabase in het geheugen, geen `.env` en geen login nodig; wijzigingen verdwijnen bij verversen). Zonder database bruikbaar om de app te bekijken.
 - `npm run typecheck`: `tsc --noEmit`
 - `npm run build`: typecheck + Vite-build naar `dist/`
 
